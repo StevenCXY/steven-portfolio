@@ -10,7 +10,6 @@
     <meta property="og:type" content="website">
 
     <style>
-        /* 亮色高级主题配色 */
         :root {
             --bg: #f5f5f7;
             --card-bg: #ffffff;
@@ -40,7 +39,7 @@
         body.show-zh span.lang-zh { display: inline; }
         body.show-zh span.lang-en { display: none; }
 
-        /* 1. 开场动画 (Splash) */
+        /* 开场动画 */
         #splash-screen {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-color: #ffffff; display: flex; justify-content: center;
@@ -61,7 +60,7 @@
         @keyframes growStem { 100% { height: 120px; } }
         @keyframes bloomFlower { 100% { transform: scale(1) rotate(45deg); } }
 
-        /* 2. 主体框架 */
+        /* 主体框架 */
         #main-app { opacity: 0; visibility: hidden; transition: opacity 1s ease; }
         #main-app.show { opacity: 1; visibility: visible; }
 
@@ -92,7 +91,7 @@
         .container.active { display: block; animation: fadeUp 0.6s ease; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 3. 排版样式 */
+        /* 排版样式 */
         .hero { text-align: center; padding: 30px 0 50px; }
         .hero h1 { font-size: 48px; margin: 0; font-weight: 700; letter-spacing: -0.02em; }
         .tagline { font-size: 18px; color: var(--text-dim); margin-top: 10px; }
@@ -120,7 +119,7 @@
         .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
         .skill-tag { background: #f0f4f8; border: 1px solid #e2e8f0; color: var(--accent); padding: 8px 16px; border-radius: 30px; font-size: 13px; font-weight: 500; }
 
-        /* Monthly List 样式 */
+        /* Monthly List */
         .list-header { margin-bottom: 30px; }
         .list-header h2 { font-size: 32px; margin: 0 0 10px 0; }
         .list-input-group { display: flex; gap: 12px; margin-bottom: 40px; }
@@ -133,7 +132,7 @@
         .btn-done:hover { background: rgba(52, 199, 89, 0.1); }
         .empty-state { text-align: center; color: var(--text-dim); padding: 40px; border: 1px dashed #ccc; border-radius: 16px; }
 
-        /* 手机端响应式适配 */
+        /* 手机适配 */
         @media (max-width: 768px) {
             .bento-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 36px; }
@@ -170,7 +169,7 @@
             <a onclick="showSection('list')" id="nav-list">
                 <span class="lang-en">Monthly List</span><span class="lang-zh">月度规划</span>
             </a>
-           <a href="Xuanyu Chen StevenUofT 20260406.pdf" target="_blank" class="btn-download">
+            <a href="Xuanyu Chen StevenUofT 20260406.pdf" target="_blank" class="btn-download">
                 <span class="lang-en">Download PDF</span><span class="lang-zh">下载简历</span>
             </a>
             <button class="lang-toggle" onclick="toggleLanguage()">EN / 中文</button>
@@ -184,15 +183,18 @@
                     <span class="lang-en">Tech Leverage & Business Growth Analyst</span>
                     <span class="lang-zh">技术杠杆驱动的高级商业分析师</span>
                 </div>
-                <div class="contact-info">ShenZhen | cxystevenchen@163.com</div>
+                <div class="contact-info">
+                    <span class="lang-en">ShenZhen / Hong Kong | cxystevenchen@163.com</span>
+                    <span class="lang-zh">深圳 / 香港 | cxystevenchen@163.com</span>
+                </div>
             </div>
             
             <div class="bento-grid">
                 <div class="bento-item">
                     <h3><span class="lang-en">UofT Background</span><span class="lang-zh">复合学科背景</span></h3>
                     <p>
-                        <span class="lang-en">Digital Media, Economics, Linguistics. Equipped with 10 years of Canada study and living experience, possessing exceptional cross-cultural commercial acumen.</span>
-                        <span class="lang-zh">多伦多大学数字媒体、经济学与语言学。拥有10年北美学习与生活经验，具备极强的跨文化沟通能力与商业洞察力。</span>
+                        <span class="lang-en">Digital Media and Economics. Equipped with 10 years of Canada study and living experience, possessing exceptional cross-cultural commercial acumen.</span>
+                        <span class="lang-zh">多伦多大学数字媒体与经济学。拥有10年北美学习与生活经验，具备极强的跨文化沟通能力与商业洞察力。</span>
                     </p>
                 </div>
                 <div class="bento-item">
@@ -278,10 +280,10 @@
                     <div class="date-location">Sep 2018 - Sep 2023<br>Toronto</div>
                 </div>
                 <ul class="resume-list lang-en">
-                    <li><strong>Academics:</strong> Digital Media, Linguistics, and Economics.</li>
+                    <li><strong>Academics:</strong> Digital Media and Economics.</li>
                 </ul>
                 <ul class="resume-list lang-zh">
-                    <li><strong>专业背景：</strong> 数字媒体、经济学、语言学。</li>
+                    <li><strong>专业背景：</strong> 数字媒体与经济学。</li>
                 </ul>
             </div>
 
@@ -319,7 +321,6 @@
     </div>
 
     <script>
-        // 1. 中英文切换逻辑
         let isChinese = false;
         function toggleLanguage() {
             isChinese = !isChinese;
@@ -327,17 +328,14 @@
             document.body.classList.toggle('show-en', !isChinese);
         }
 
-        // 2. 智能开场动画 (SessionStorage)
         const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
         const splash = document.getElementById('splash-screen');
         const mainApp = document.getElementById('main-app');
 
         if (hasSeenSplash) {
-            // 如果今天看过了，直接跳过动画显示内容
             splash.style.display = 'none';
             mainApp.classList.add('show');
         } else {
-            // 没看过的话，看3秒动画
             setTimeout(() => {
                 splash.style.opacity = '0';
                 mainApp.classList.add('show');
@@ -346,7 +344,6 @@
             }, 3000);
         }
 
-        // 3. 导航切换逻辑
         function showSection(sectionId) {
             document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
@@ -355,7 +352,6 @@
             window.scrollTo(0, 0);
         }
 
-        // 4. Monthly List 功能逻辑
         const taskList = document.getElementById('taskList');
         const taskInput = document.getElementById('taskInput');
         let savedTasks = JSON.parse(localStorage.getItem('stevenTasksComplete')) || [];
